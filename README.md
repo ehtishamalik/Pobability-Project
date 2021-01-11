@@ -2,7 +2,7 @@
 
 ## 1) Symptom Based Covid-19 Detection 
 Command-line syntax:   
-      python Covid19_Pred.py Symptom_data_file.csv Patient_Symptom_file.csv  
+      python CovidMain.py Symptom_data_file.csv Patient_Symptom_file.csv  
 ###### Input Parameters:   
 a) Covid-19 sysmptom and test data   
    i) Infected/Not Infected  (Yes/No)   
