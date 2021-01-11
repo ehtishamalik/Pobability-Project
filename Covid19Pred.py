@@ -1,12 +1,21 @@
 # importing pandas module to read csv file.
 import pandas
 import sys
+from csv import DictReader #For creating dict from csv file
 #Readig data from csv to a dataframe
 def read_data(filename):
     Data = pandas.read_csv("data.csv", sep=",")
     # reading data files using pandas 
     Data
     return Data
+
+#Reading from csv to dictionary
+def csv_to_dict(test_file):
+    file = open(test_file, "r")
+    reader= DictReader(file)
+    labels = list(reader)[0]
+    dict_in = dict(labels)
+    return dict_in
 
 #Separating data based on a given label in a given column
 def Separate_data(Data,label,column):
@@ -124,6 +133,6 @@ def main(filename,symptoms):
     
 if __name__ == "__main__":
     filename=sys.argv[1]
-    in_row=list(map(float, sys.argv[2:]))
-    symptoms  = {'Dry Cough': in_row[0], 'High Fever': in_row[1], 'Sore Throat':in_row[2], 'Difficulty in breathing': in_row[3]}
+    test_file=sys.argv[2]
+    symptoms=csv_to_dict(test_file)
     main(filename,symptoms)
