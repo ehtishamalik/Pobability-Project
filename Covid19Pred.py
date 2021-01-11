@@ -4,7 +4,7 @@ import sys
 from csv import DictReader #For creating dict from csv file
 #Readig data from csv to a dataframe
 def read_data(filename):
-    Data = pandas.read_csv("data.csv", sep=",")
+    Data = pandas.read_csv(filename, sep=",")
     # reading data files using pandas 
     Data
     return Data
@@ -22,8 +22,9 @@ def Separate_data(Data,label,column):
     Sep_Data=Data[Data[Data.columns[column]] == label]
     return Sep_Data
 
-def main(filename,symptoms):
+def main(filename,test_file):
     Data=read_data(filename)
+    symptoms=csv_to_dict(test_file)
     # seperating data infected with Corona
     Data_Inf = Separate_data(Data,"Yes",0)
     # Displaying output of infected people
@@ -134,5 +135,4 @@ def main(filename,symptoms):
 if __name__ == "__main__":
     filename=sys.argv[1]
     test_file=sys.argv[2]
-    symptoms=csv_to_dict(test_file)
-    main(filename,symptoms)
+    main(filename,test_file)
